@@ -8,12 +8,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import static api.comm.CommConst.Date.yyyyMMdd;
+
 /**
  * JDK 1.7 이하
  * java.util.Date, java.util.Calendar 클래스 사용
  */
 public class DateUtil7 {
-    private static final String format = CommConst.Date.yyyyMMdd;
+    private static final String format = yyyyMMdd;
 
     public static String getToday() {
         return getToDay(format);
@@ -44,7 +46,8 @@ public class DateUtil7 {
 
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
-            calendar.add(Calendar.DATE, offset);
+            calendar.add(Calendar.DAY_OF_MONTH, offset);
+
             offsetDate = fmt.format(calendar.getTime());
 
         } catch (ParseException e) {

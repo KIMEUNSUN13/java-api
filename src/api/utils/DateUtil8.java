@@ -1,9 +1,6 @@
 package api.utils;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -11,7 +8,8 @@ import java.time.format.DateTimeFormatter;
  * java.util.time 패키지 사용
  */
 public class DateUtil8 {
-    private static final String format = DateTimeFormatter.BASIC_ISO_DATE.toString();
+    // private static final String format = DateTimeFormatter.BASIC_ISO_DATE.toString();
+    private static final String format = "yyyyMMdd";
 
     public static String getToDay() {
         return getToDay(format, false);
@@ -36,4 +34,13 @@ public class DateUtil8 {
 
     /** ##################################################################### **/
 
+    public static String getOffsetDate(int year, int month, int day, int offset) {
+        return getOffsetDate(year, month, day, offset, format);
+    }
+
+    public static String getOffsetDate(int year, int month, int day, int offset, String format) {
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern(format);
+        LocalDate localDate = LocalDate.of(year, month, day).plusDays(offset);
+        return localDate.format(fmt);
+    }
 }
