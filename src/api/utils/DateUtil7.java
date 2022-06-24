@@ -62,8 +62,6 @@ public class DateUtil7 {
     /** ##################################################################### **/
 
     public static int getDayDiff(String yyyyMMdd1, String yyyyMMdd2) {
-        int diff = -1;
-
         if(yyyyMMdd1.equals(yyyyMMdd2)) {
             return 0;
         }
@@ -84,8 +82,7 @@ public class DateUtil7 {
         date1.set(year1, month1, day1);
         date2.set(year2, month2, day2);
 
-        diff = (int) ((date2.getTimeInMillis() - date1.getTimeInMillis()) / (24 * 60 * 60 * 1000));
-
+        int diff = (int) ((date2.getTimeInMillis() - date1.getTimeInMillis()) / (24 * 60 * 60 * 1000));
         return Math.abs(diff);
     }
 }
